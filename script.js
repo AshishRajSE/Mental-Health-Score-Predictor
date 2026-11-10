@@ -1,4 +1,4 @@
-const API_URL = "https://mental-health-score-predictor-ymmp.onrender.com";
+const API_URL = "https://mental-health-score-predictor-ymmp.onrender.com/predict";
 
 const form = document.getElementById("prediction-form");
 const submitButton = document.getElementById("submit-button");
@@ -112,7 +112,7 @@ form.addEventListener("submit", async (event) => {
     if (!errorMessage.hidden) {
       // Keep the field-level validation details already displayed.
     } else if (error instanceof TypeError) {
-      showError("Could not connect to the prediction API. Make sure FastAPI is running at http://127.0.0.1:8000 and try again.");
+      showError("Could not connect to the deployed prediction API. Please check your internet connection or try again later.");
     } else {
       showError(error.message || "Something went wrong. Please try again.");
     }
