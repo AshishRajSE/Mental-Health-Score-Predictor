@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#101827" />
+  <title>MindMetrics | Mental Health Predictor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="MindMetrics home">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 32 32"><path d="M16 4.5c-6.2 0-11.2 5-11.2 11.2S9.8 27 16 27s11.2-5 11.2-11.3S22.2 4.5 16 4.5Z"/><path d="M8.5 16h4l2-5 3.2 10 2.1-5h3.7"/></svg>
+      </span>
+      <span>mind<span class="brand-light">metrics</span></span>
+    </a>
+    <div class="topbar-note"><span class="status-dot"></span> ML-powered assessment demo</div>
+  </header>
+
+  <main class="page-shell">
+    <section class="intro">
+      <div class="eyebrow"><span class="eyebrow-line"></span> STUDENT WELLBEING INSIGHTS</div>
+      <h1>Understand the <span>patterns.</span><br>Support the person.</h1>
+      <p class="intro-copy">Enter a few details about your digital habits, studies and daily routine to generate a model-based mental health score.</p>
+      <div class="privacy-note">
+        <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2.5 16 5v4.4c0 4-2.6 6.8-6 8.1-3.4-1.3-6-4.1-6-8.1V5l6-2.5Z"/><path d="m7.4 9.8 1.7 1.7 3.6-3.7"/></svg>
+        <span>Your entries are sent to your local prediction API.</span>
+      </div>
+    </section>
+
+    <div class="content-grid">
+      <section class="form-card">
+        <div class="card-heading">
+          <div>
+            <div class="section-kicker">YOUR PROFILE</div>
+            <h2>Student details</h2>
+            <p>Complete each section to get your prediction.</p>
+          </div>
+          <div class="step-pill"><span>01</span> / 01</div>
+        </div>
+
+        <form id="prediction-form">
+          <div class="form-section">
+            <div class="form-section-title"><span class="section-icon">01</span><div><h3>About you</h3><p>A little context about your background.</p></div></div>
+            <div class="fields two-col">
+              <label class="field">
+                <span>Age <b>*</b></span>
+                <input type="number" name="Age" min="10" max="100" step="1" placeholder="e.g. 21" required />
+                <small>Between 10 and 100 years</small>
+              </label>
+              <label class="field">
+                <span>Gender <b>*</b></span>
+                <select name="Gender" required>
+                  <option value="" disabled selected>Select gender</option>
+                  <option>Male</option><option>Female</option>
+                </select>
+              </label>
+              <label class="field">
+                <span>Country <b>*</b></span>
+                <input name="Country" list="country-options" placeholder="Choose or type a country" required />
+                <datalist id="country-options">
+                  <option value="India"><option value="USA"><option value="Canada"><option value="Australia">
+                  <option value="UK"><option value="Germany"><option value="Mexico"><option value="Turkey">
+                  <option value="France"><option value="Other">
+                </datalist>
+                <small>Countries outside the common list are grouped as “Other” by your backend.</small>
+              </label>
+              <label class="field">
+                <span>Academic level <b>*</b></span>
+                <select name="Academic_Level" required>
+                  <option value="" disabled selected>Select academic level</option>
+                  <option>High School</option><option>Undergraduate</option><option>Graduate</option>
+                </select>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <div class="form-section-title"><span class="section-icon">02</span><div><h3>Digital habits</h3><p>How you use social and digital platforms.</p></div></div>
+            <div class="fields two-col">
+              <label class="field">
+                <span>Most-used platform <b>*</b></span>
+                <select name="Most_Used_Platform" required>
+                  <option value="" disabled selected>Select a platform</option>
+                  <option>Facebook</option><option>LinkedIn</option><option>Instagram</option><option>Snapchat</option>
+                  <option>Twitter</option><option>YouTube</option><option>TikTok</option><option>LINE</option>
+                  <option>KakaoTalk</option><option>VKontakte</option><option>WhatsApp</option><option>WeChat</option>
+                </select>
+              </label>
+              <label class="field">
+                <span>Main purpose of use <b>*</b></span>
+                <select name="Purpose_Of_Use" required>
+                  <option value="" disabled selected>Select a purpose</option>
+                  <option>Networking</option><option>Education</option><option>Entertainment</option><option>News</option>
+                </select>
+              </label>
+              <label class="field">
+                <span>Average daily usage <b>*</b></span>
+                <div class="input-unit"><input type="number" name="Avg_Daily_Usage_Hours" min="0" max="24" step="0.1" placeholder="e.g. 4.5" required /><em>hours</em></div>
+                <small>0–24 hours per day</small>
+              </label>
+              <label class="field">
+                <span>Daily phone unlocks <b>*</b></span>
+                <input type="number" name="Daily_Unlocks" min="0" step="1" placeholder="e.g. 65" required />
+                <small>Enter a whole number</small>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <div class="form-section-title"><span class="section-icon">03</span><div><h3>Daily routine</h3><p>Your typical study, activity and sleep patterns.</p></div></div>
+            <div class="fields two-col">
+              <label class="field">
+                <span>Study hours per day <b>*</b></span>
+                <div class="input-unit"><input type="number" name="Study_Hours" min="0" max="24" step="0.1" placeholder="e.g. 5" required /><em>hours</em></div>
+                <small>0–24 hours per day</small>
+              </label>
+              <label class="field">
+                <span>Physical activity per day <b>*</b></span>
+                <div class="input-unit"><input type="number" name="Physical_Activity_Hours" min="0" max="2" step="0.1" placeholder="e.g. 0.5" required /><em>hours</em></div>
+                <small>0–2 hours per day, as required by the model</small>
+              </label>
+              <label class="field">
+                <span>Sleep per night <b>*</b></span>
+                <div class="input-unit"><input type="number" name="Sleep_Hours_Per_Night" min="0" max="24" step="0.1" placeholder="e.g. 7.5" required /><em>hours</em></div>
+                <small>0–24 hours per night</small>
+              </label>
+              <label class="field">
+                <span>Perceived stress level <b>*</b></span>
+                <select name="Stress_Level" required>
+                  <option value="" disabled selected>Select stress level</option>
+                  <option>Low</option><option>Medium</option><option>High</option><option>Very High</option>
+                </select>
+              </label>
+            </div>
+          </div>
+
+          <div id="error-message" class="alert error-alert" role="alert" hidden></div>
+          <button class="submit-button" id="submit-button" type="submit">
+            <span class="button-label">Generate my score</span>
+            <span class="button-arrow" aria-hidden="true">↗</span>
+            <span class="spinner" aria-hidden="true"></span>
+          </button>
+          <p class="form-footnote">All fields are required. Your answers are used only to request a prediction from this app's API.</p>
+        </form>
+      </section>
+
+      <aside class="side-column">
+        <section class="result-card" id="result-card" aria-live="polite">
+          <div class="result-topline"><span class="result-icon">✳</span><span>YOUR RESULT</span><span class="result-status" id="result-status">AWAITING INPUT</span></div>
+          <div class="result-placeholder" id="result-placeholder">
+            <div class="orb"><span>✳</span></div>
+            <h2>Your insight<br>starts here.</h2>
+            <p>Complete the form and your predicted score will appear in this space.</p>
+          </div>
+          <div class="result-content" id="result-content" hidden>
+            <p class="result-label">Predicted mental health score</p>
+            <div class="score-line"><strong id="score-value">—</strong><span>model score</span></div>
+            <div class="score-rule"><span></span></div>
+            <p class="result-caption">Prediction received successfully from your machine-learning model.</p>
+          </div>
+          <div class="result-bottom"><span class="pulse-dot"></span> Connected to local API <span class="result-endpoint">/predict</span></div>
+        </section>
+
+        <section class="info-card">
+          <div class="info-symbol">i</div>
+          <div><h3>A note about this score</h3><p>This is an output from a machine-learning model, not a clinical assessment or diagnosis. It should not be used as a substitute for guidance from a qualified mental health professional.</p></div>
+        </section>
+        <section class="how-card">
+          <div class="how-heading"><span>HOW IT WORKS</span><span class="mini-spark">✦</span></div>
+          <div class="how-step"><span>1</span><p><b>Share your routine</b><small>Fill in the student profile.</small></p></div>
+          <div class="how-step"><span>2</span><p><b>Model processes inputs</b><small>Your FastAPI backend runs the model.</small></p></div>
+          <div class="how-step"><span>3</span><p><b>View your result</b><small>Your predicted score appears here.</small></p></div>
+        </section>
+      </aside>
+    </div>
+    <footer><span>mindmetrics</span><span>Student wellbeing · ML project demo</span></footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
+
+
